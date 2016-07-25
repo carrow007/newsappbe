@@ -16,7 +16,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(cors());
 
 // mongoURL
-var url = 'mongodb://localhost:27017/news-app'
+var url = 'mongodb://heroku_6v366k4v:paic71j5tu3s9f8i9ith5i66b8@ds029735.mlab.com:29735/heroku_6v366k4v'
 
 mongodb.MongoClient.connect(process.env.MONGODB_URI || url, function (err, database) {
   if (err) {
@@ -25,7 +25,7 @@ mongodb.MongoClient.connect(process.env.MONGODB_URI || url, function (err, datab
   }
   db = database;
   console.log("Database connection ready");
-  var server = app.listen(process.env.PORT || 3000, function () {
+  var server = app.listen(process.env.PORT || 80, function () {
     var port = server.address().port;
     console.log("App now running on port", port);
   });
