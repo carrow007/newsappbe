@@ -1,4 +1,4 @@
-var PORT       = process.env.PORT || 3000;
+var PORT       = process.env.PORT || 80;
 var express    = require("express");
 var bodyParser = require("body-parser");
 var cors       = require("cors");
