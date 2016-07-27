@@ -53,7 +53,7 @@ app.get("/articles", function(req, res) {
 
   // save articles to favorites
   app.post("/articles", function(req, res) {
-    var newArticle = {title: req.body.title, date: new Date() };
+    var newArticle = {title: req.body.title, date: new Date()};
 
     // insert one new article
     db.collection(ARTICLES_COLLECTION).insert(newArticle, function(err, doc) {
@@ -67,7 +67,7 @@ app.get("/articles", function(req, res) {
 // delete by article source
 app.delete("/articles/:author", function(req, res) {
 
-  db.collection(ARTICLES_COLLECTION).remove({ name: req.params.name }, function(err, result) {
+  db.collection(ARTICLES_COLLECTION).remove({ author: req.params.author }, function(err, result) {
     if (err) {
       handleError(res, err.message, "Failed to delete article");
     } else {
@@ -77,17 +77,3 @@ app.delete("/articles/:author", function(req, res) {
 
 });
 
-app.put("/articles/:title", function(req, res) {
-
-  //
-  var updateDoc = req.body;
-  delete updateDoc._id;
-
-  db.collection(ARTICLES_COLLECTION).update({_id: new ObjectID(req.params.id)}, updateDoc, function(err, doc) {
-    if (err) {
-      handleError(res, err.message, "Failed to update article");
-    } else {
-      res.status(204).end();
-    }
-  });
-  });
