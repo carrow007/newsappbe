@@ -54,6 +54,7 @@ app.get("/articles", function(req, res) {
   // save articles to favorites
   app.post("/articles", function(req, res) {
     var newArticle = {title: req.body.title, date: new Date()};
+    console.log(req.body)
 
     // insert one new article
     db.collection(ARTICLES_COLLECTION).insert(newArticle, function(err, doc) {
