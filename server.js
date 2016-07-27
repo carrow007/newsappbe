@@ -68,7 +68,7 @@ app.get("/articles", function(req, res) {
 // delete by article source
 app.delete("/articles", function(req, res) {
 
-  db.collection(ARTICLES_COLLECTION).remove({ _id: req.params._id }, function(err, result) {
+  db.collection(ARTICLES_COLLECTION).remove({ _id: req.id }, function(err, result) {
     if (err) {
       handleError(res, err.message, "Failed to delete article");
     } else {
