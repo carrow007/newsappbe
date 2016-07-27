@@ -53,7 +53,7 @@ app.get("/articles", function(req, res) {
 
   // save articles to favorites
   app.post("/articles", function(req, res) {
-    var newArticle = {title: req.body.title, date: new Date()};
+    var newArticle = {url: req.body.url, date: new Date()};
     console.log(req.body)
 
     // insert one new article
